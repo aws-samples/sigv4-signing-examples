@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        GetHello:
+          Type: Api 
+          Properties:
+            RestApiId: 
+              Ref: HelloWorldApi
+            Path: /hello
+            Method: get
+
+  HelloWorldApi:
+    Type: AWS::Serverless::Api
+    Properties: 
+      Name: HelloWorldApi
+      StageName: Prod
+      Auth:
+        DefaultAuthorizer: AWS_IAM
