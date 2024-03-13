@@ -18,7 +18,7 @@ fn make_signature(
     algorithm: &str,
 ) -> String {
     // Create the Task1 string
-    let task1 = format!(
+    let _task1 = format!(
         "{}\n{}\n{}/{}/{}/{}/aws4_request\n{}",
         algorithm,
         t.format("%Y%m%dT%H%M%SZ"),
