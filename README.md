@@ -37,10 +37,6 @@ dotnet run
 
 dotnet run  1.90s user 0.63s system 108% cpu 2.329 total
 
-cargo run main.go
-
-cargo run  0.10s user 0.09s system 30% cpu 0.644 total
-
 node main.js
 
 node main.js  0.11s user 0.05s system 21% cpu 0.764 total
