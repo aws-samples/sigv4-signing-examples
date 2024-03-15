@@ -31,6 +31,7 @@ SigV4Auth(session.get_credentials(), service, region).add_auth(request)
 
 try:
     response = requests.request(method, url, headers=dict(request.headers), data={}, timeout=5)
+    response.raise_for_status()
     print(f'Response Status: {response.status_code}')
     print(f'Response Body: {response.content.decode("utf-8")}')
 except Exception as e:

@@ -61,5 +61,6 @@ headers = {'Host': host,
            'Authorization': authorization_header}
 request_url = 'https://' + host + canonical_uri
 response = requests.get(request_url, headers=headers, timeout=5)
+response.raise_for_status()
 
 print(response.text)
