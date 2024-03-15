@@ -2,11 +2,11 @@
 
 This repository contains example code implementing the [AWS Signature Version 4 (SigV4)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) protocol for signing requests. 
 
-It is recommended wherever possible that you instead [use the AWS SDKs for creating signed requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/create-signed-request.html#code-signing-examples). There are some scenarios where that might not be possible, such as in IoT or embedded applications where the AWS SDK is not available. 
+It is recommended wherever possible that you instead [use the AWS SDKs for creating signed requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/create-signed-request.html#code-signing-examples). There are some scenarios where that might not be possible, such as in IoT or embedded applications where the AWS SDK is not available. As such, the examples in this repository are split in two sets; "sdk" and "no-sdk". The SDK examples show how to use built-in features of the AWS SDK to construct SigV4 signed requests. The No-SDK examples show how to implement the signing from scratch, without the AWS SDK.
 
 The examples in this repository use an AWS API Gateway execute-api request. The API Gateway has an IAM Authorizer, which requires the request to be signed using the SigV4 protocol. You can adjust the examples depending on the AWS API you wish to call. 
 
-Note that all the examples in this repository use temporary credentials. These are are short-lived access credentials and are preferred to long-lived security credentials where possible. For example these might be provided by assuming a role or vended by a token management service. If you want to change any of the examples to use long-lived security credentials instead, simply remove the `x-amz-security-token` header from the request. 
+The examples in this repository use temporary credentials. These are are short-lived access credentials and are preferred to long-lived security credentials where possible. For example these might be provided by assuming a role or vended by a token management service. If you want to change any of the examples to use long-lived security credentials instead, simply remove the `x-amz-security-token` header from the request. 
 
 For example, in NodeJS, change the headers from this:
 
@@ -72,7 +72,11 @@ export RESTAPIPATH="/Prod/hello"
 
 ## Using the examples
 
-This repository provides examples in the following frameworks:
+For all the examples, a simple "Hello World!" response indicates things are working as expected.
+
+## No-SDK
+
+This section provides examples in the following frameworks:
 
 * Java
 * .NET (C#)
@@ -114,6 +118,39 @@ python3 main.py
 
 ```
 cd ./golang
+go build
+./main
+```
+
+## SDK
+
+This section provides examples in the following frameworks:
+
+* NodeJS
+* Python3
+* Go
+
+### NodeJS
+
+```
+cd ./nodejs
+npm i
+node main.js
+```
+
+### Python
+
+```
+cd ./python
+pip3 install -r requirements.txt
+python3 main.py
+```
+
+### Go
+
+```
+cd ./golang
+go get
 go build
 ./main
 ```

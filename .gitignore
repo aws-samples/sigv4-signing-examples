@@ -6,3 +6,4 @@ target/
 *.lock
 DS_Store
 main
+node_modules/
