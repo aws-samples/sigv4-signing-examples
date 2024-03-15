@@ -29,6 +29,8 @@ To this:
   }
 ```
 
+Note this repository only contains examples implementing SigV4. For Signature Version 4A (SigV4A) visit the [SigV4a Signing Examples repository](https://github.com/aws-samples/sigv4a-signing-examples).
+
 ## Deploying the sample application
 
 A sample application is provided for you to test the SigV4 protocol with. This application deploys a simple serverless API with an AWS API Gateway backed by an AWS Lambda function. 
