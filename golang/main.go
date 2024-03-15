@@ -13,8 +13,8 @@ import (
 )
 
 func makeSignature(t time.Time, payloadHash, region, service, secretAccessKey, algorithm string) string {
-	// Create the Task1 string
-	task1 := strings.Join([]string{
+	// Create the string to sign
+	stringToSign := strings.Join([]string{
 		algorithm,
 		t.Format("20060102T150405Z"),
 		strings.Join([]string{
@@ -39,7 +39,7 @@ func makeSignature(t time.Time, payloadHash, region, service, secretAccessKey, a
 	kSigning := hash("aws4_request", kService)
 
 	// Sign the string
-	signature := hex.EncodeToString(hash(task1, kSigning))
+	signature := hex.EncodeToString(hash(stringToSign, kSigning))
 
 	return signature
 }
@@ -64,7 +64,7 @@ func main() {
 		canonicalURI,
 		"", // No query string
 		strings.Join([]string{
-			"host:" + apiGatewayURL[8:],
+			"host:" + host,
 			"x-amz-date:" + now.Format("20060102T150405Z"),
 		}, "\n"),
 		"",
@@ -100,7 +100,7 @@ func main() {
 	req.Header.Add("Authorization", authHeader)
 	req.Header.Add("X-Amz-Date", now.Format("20060102T150405Z"))
 	req.Header.Add("X-Amz-Security-Token", sessionToken)
-	req.Header.Add("Host", apiGatewayURL[8:])
+	req.Header.Add("Host", host)
 
 	// Send the request
 	client := &http.Client{}

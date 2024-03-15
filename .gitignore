@@ -5,3 +5,4 @@ obj/
 target/
 *.lock
 DS_Store
+main

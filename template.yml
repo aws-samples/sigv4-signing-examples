@@ -25,3 +25,8 @@ Resources:
       StageName: Prod
       Auth:
         DefaultAuthorizer: AWS_IAM
+
+Outputs:
+  ApiUrl:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "${HelloWorldApi}.execute-api.${AWS::Region}.amazonaws.com"

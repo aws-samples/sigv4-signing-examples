@@ -1,3 +1,40 @@
+# SigV4 Signing Examples
+
+This repository contains example code implementing the [AWS Signature Version 4 (SigV4)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) protocol for signing requests. 
+
+It is recommended wherever possible that you instead [use the AWS SDKs for creating signed requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/create-signed-request.html#code-signing-examples). There are some scenarios where that might not be possible, such as in IoT or embedded applications where the AWS SDK is not available. 
+
+The examples in this repository use an AWS API Gateway execute-api request. The API Gateway has an IAM Authorizer, which requires the request to be signed using the SigV4 protocol. You can adjust the examples depending on the AWS API you wish to call. 
+
+Note that all the examples in this repository use temporary credentials. These are are short-lived access credentials and are preferred to long-lived security credentials where possible. For example these might be provided by assuming a role or vended by a token management service. If you want to change any of the examples to use long-lived security credentials instead, simply remove the `x-amz-security-token` header from the request. 
+
+For example, in NodeJS, change the headers from this:
+
+```javascript
+  headers: {
+    'host': host,
+    'x-amz-date': amzDate,
+    'x-amz-security-token': sessionToken,
+    'Authorization': authorizationHeader
+  }
+```
+
+To this:
+
+```javascript
+  headers: {
+    'host': host,
+    'x-amz-date': amzDate,
+    'Authorization': authorizationHeader
+  }
+```
+
+## Deploying the sample application
+
+A sample application is provided for you to test the SigV4 protocol with. This application deploys a simple serverless API with an AWS API Gateway backed by an AWS Lambda function. 
+
+To deploy the application, the Serverless Application Model (SAM) is used:
+
 ```
 sam deploy --guided
 ```
@@ -24,27 +61,57 @@ Configuring SAM deploy
         SAM configuration environment [default]: 
 ```
 
+Once deployed, retrieve the ApiUrl from the Outputs section and set this and the path as environment variables:
+
+```
 export RESTAPIHOST="pyx4v5cl1k.execute-api.us-east-1.amazonaws.com"
 export RESTAPIPATH="/Prod/hello"
+```
 
+## Using the examples
+
+This repository provides examples in the following frameworks:
+
+* Java
+* .NET (C#)
+* NodeJS
+* Python3
+* Go
+
+### Java
+
+```
+cd ./java
 javac AWSSigner.java
 java AWSSigner
+```
 
-java AWSSigner  1.25s user 0.17s system 106% cpu 1.342 total
+### .NET
 
+```
+cd ./dotnet
 dotnet build
 dotnet run
+```
 
-dotnet run  1.90s user 0.63s system 108% cpu 2.329 total
+### NodeJS
 
+```
+cd ./nodejs
 node main.js
+```
 
-node main.js  0.11s user 0.05s system 21% cpu 0.764 total
+### Python
 
+```
+cd ./python
 python3 main.py
+```
 
-python3 main.py  0.24s user 0.12s system 36% cpu 0.981 total
+### Go
 
-go run main.go
-
-./main  0.01s user 0.01s system 7% cpu 0.344 total
+```
+cd ./golang
+go build
+./main
+```
