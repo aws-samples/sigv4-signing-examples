@@ -8,6 +8,7 @@ Resources:
     Properties:
       CodeUri: api/
       Handler: app.lambda_handler
+      ReservedConcurrentExecutions: 3
       Runtime: python3.8
       Events:
         GetHello:
@@ -18,6 +19,12 @@ Resources:
             Path: /hello
             Method: get
 
+  HelloWorldLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: HelloWorldApiLogGroup
+      RetentionInDays: 7
+
   HelloWorldApi:
     Type: AWS::Serverless::Api
     Properties: 
@@ -25,6 +32,9 @@ Resources:
       StageName: Prod
       Auth:
         DefaultAuthorizer: AWS_IAM
+      AccessLogSetting:
+        DestinationArn: !GetAtt HelloWorldLogGroup.Arn
+        Format: '$context.identity.sourceIp $context.requestTime $context.httpMethod $context.resourcePath $context.protocol $context.status $context.responseLength $context.requestId'
 
 Outputs:
   ApiUrl:
