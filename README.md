@@ -66,8 +66,16 @@ Configuring SAM deploy
 Once deployed, retrieve the ApiUrl from the Outputs section and set this and the path as environment variables:
 
 ```
-export RESTAPIHOST="pyx4v5cl1k.execute-api.us-east-1.amazonaws.com"
+export RESTAPIHOST="myapi123.execute-api.us-east-1.amazonaws.com"
 export RESTAPIPATH="/Prod/hello"
+```
+
+You must also have AWS Credentials set in the environment:
+
+```
+export AWS_ACCESS_KEY_ID=ASIAUZABC123456
+export AWS_SECRET_ACCESS_KEY=5wfFi0FEaaaaacccc1111111111111
+export AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjE...
 ```
 
 ## Using the examples
