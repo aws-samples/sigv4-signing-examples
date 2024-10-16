@@ -33,7 +33,7 @@ Note this repository only contains examples implementing SigV4. For Signature Ve
 
 ## Deploying the sample application
 
-[A sample application](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-hello-world.html) is provided for you to test the SigV4 protocol with. This application deploys a simple serverless API with an AWS API Gateway backed by an AWS Lambda function.
+A sample application is provided for you to test the SigV4 protocol with. This application deploys a simple serverless API with an AWS API Gateway backed by an AWS Lambda function. 
 
 To deploy the application, the Serverless Application Model (SAM) is used:
 
