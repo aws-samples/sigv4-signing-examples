@@ -1,12 +1,12 @@
 # SigV4 Signing Examples
 
-This repository contains example code implementing the [AWS Signature Version 4 (SigV4)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) protocol for signing requests. 
+This repository contains example code implementing the [AWS Signature Version 4 (SigV4)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) protocol for signing requests.
 
 It is recommended wherever possible that you instead [use the AWS SDKs for creating signed requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/create-signed-request.html#code-signing-examples). There are some scenarios where that might not be possible, such as in IoT or embedded applications where the AWS SDK is not available. As such, the examples in this repository are split in two sets; "sdk" and "no-sdk". The SDK examples show how to use built-in features of the AWS SDK to construct SigV4 signed requests. The No-SDK examples show how to implement the signing from scratch, without the AWS SDK.
 
-The examples in this repository use an AWS API Gateway execute-api request. The API Gateway has an IAM Authorizer, which requires the request to be signed using the SigV4 protocol. You can adjust the examples depending on the AWS API you wish to call. 
+The examples in this repository use an AWS API Gateway execute-api request. The API Gateway has an IAM Authorizer, which requires the request to be signed using the SigV4 protocol. You can adjust the examples depending on the AWS API you wish to call.
 
-The examples in this repository use temporary credentials. These are are short-lived access credentials and are preferred to long-lived security credentials where possible. For example these might be provided by assuming a role or vended by a token management service. If you want to change any of the examples to use long-lived security credentials instead, simply remove the `x-amz-security-token` header from the request. 
+The examples in this repository use temporary credentials. These are are short-lived access credentials and are preferred to long-lived security credentials where possible. For example these might be provided by assuming a role or vended by a token management service. If you want to change any of the examples to use long-lived security credentials instead, simply remove the `x-amz-security-token` header from the request.
 
 For example, in NodeJS, change the headers from this:
 
@@ -33,7 +33,7 @@ Note this repository only contains examples implementing SigV4. For Signature Ve
 
 ## Deploying the sample application
 
-A sample application is provided for you to test the SigV4 protocol with. This application deploys a simple serverless API with an AWS API Gateway backed by an AWS Lambda function. 
+[A sample application](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-hello-world.html) is provided for you to test the SigV4 protocol with. This application deploys a simple serverless API with an AWS API Gateway backed by an AWS Lambda function.
 
 To deploy the application, the Serverless Application Model (SAM) is used:
 
@@ -59,8 +59,8 @@ Configuring SAM deploy
         Disable rollback [y/N]: y
         HelloWorldFunction has no authentication. Is this okay? [y/N]: y
         Save arguments to configuration file [Y/n]: Y
-        SAM configuration file [samconfig.toml]: 
-        SAM configuration environment [default]: 
+        SAM configuration file [samconfig.toml]:
+        SAM configuration environment [default]:
 ```
 
 Once deployed, retrieve the ApiUrl from the Outputs section and set this and the path as environment variables:
@@ -94,10 +94,24 @@ This section provides examples in the following frameworks:
 
 ### Java
 
+`GET` example
+
 ```
 cd ./java
 javac AWSSigner.java
 java AWSSigner
+```
+
+`POST` example  
+This example demonstrates a signed `POST` with additional canonical headers and an `x-api-key`.
+It is taken from a real world use case and is untested against the Sample Application.
+
+```
+cd ./java
+javac AWSSignerPostExample.java
+# This example uses an x-api-key header
+export X_API_KEY=<my api key>
+java AWSSignerPostExample
 ```
 
 ### .NET
