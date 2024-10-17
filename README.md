@@ -94,10 +94,24 @@ This section provides examples in the following frameworks:
 
 ### Java
 
+`GET` example
+
 ```
 cd ./java
 javac AWSSigner.java
 java AWSSigner
+```
+
+`POST` example
+This example demonstrates a signed `POST` with additional canonical headers and an `x-api-key`.
+It is taken from a real world use case and is untested against the Sample Application.
+
+```
+cd ./java
+javac AWSSignerPostExample.java
+# This example uses an x-api-key header
+export X_API_KEY=<my api key>
+java AWSSignerPostExample
 ```
 
 ### .NET
