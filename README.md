@@ -91,6 +91,7 @@ This section provides examples in the following frameworks:
 * NodeJS
 * Python3
 * Go
+* Ruby
 
 ### Java
 
@@ -157,6 +158,12 @@ go build
 ./main
 ```
 
+### Ruby
+```
+cd ./ruby
+ruby main.rb
+```
+
 ## SDK
 
 This section provides examples in the following frameworks:
@@ -164,6 +171,7 @@ This section provides examples in the following frameworks:
 * NodeJS
 * Python3
 * Go
+* Ruby
 
 ### NodeJS
 
@@ -188,4 +196,12 @@ cd ./golang
 go get
 go build
 ./main
+```
+
+### Ruby
+
+```
+cd ./ruby
+bundle install
+ruby main.rb
 ```
