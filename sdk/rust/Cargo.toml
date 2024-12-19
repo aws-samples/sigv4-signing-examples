@@ -1,0 +1,13 @@
+[package]
+name = "aws-sdk-example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aws-config = { version = "1.5.10", features = ["behavior-version-latest"] }
+aws-credential-types = "1.2.1"
+aws-sigv4 = "1.2.6"
+http = "1.2.0"
+reqwest = "0.12.9"
+tokio = { version = "1.42.0", features = ["full"] }
+
