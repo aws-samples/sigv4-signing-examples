@@ -92,6 +92,7 @@ This section provides examples in the following frameworks:
 * Python3
 * Go
 * Ruby
+* Rust
 
 ### Java
 
@@ -164,6 +165,13 @@ cd ./ruby
 ruby main.rb
 ```
 
+### Rust
+```
+cd ./rust
+cargo run
+```
+
+
 ## SDK
 
 This section provides examples in the following frameworks:
@@ -172,6 +180,7 @@ This section provides examples in the following frameworks:
 * Python3
 * Go
 * Ruby
+* Rust
 
 ### NodeJS
 
@@ -204,4 +213,10 @@ go build
 cd ./ruby
 bundle install
 ruby main.rb
+```
+
+### Rust
+```
+cd ./rust
+cargo run
 ```
