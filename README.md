@@ -92,6 +92,7 @@ This section provides examples in the following frameworks:
 * Python3
 * Go
 * Ruby
+* Rust
 
 ### Java
 
@@ -99,20 +100,17 @@ This section provides examples in the following frameworks:
 
 ```
 cd ./java
-javac AWSSigner.java
-java AWSSigner
+javac *.java samples/*.java -d build
+java -cp build sigv4.signing.Program ApiGatewaySample
 ```
 
 `POST` example
-This example demonstrates a signed `POST` with additional canonical headers and an `x-api-key`.
-It is taken from a real world use case and is untested against the Sample Application.
+This example demonstrates a signed `POST` with additional canonical headers.
 
 ```
 cd ./java
-javac AWSSignerPostExample.java
-# This example uses an x-api-key header
-export X_API_KEY=<my api key>
-java AWSSignerPostExample
+javac *.java samples/*.java -d build
+java -cp build sigv4.signing.Program BedrockConverseSample
 ```
 
 ### .NET
@@ -164,6 +162,13 @@ cd ./ruby
 ruby main.rb
 ```
 
+### Rust
+```
+cd ./rust
+cargo run
+```
+
+
 ## SDK
 
 This section provides examples in the following frameworks:
@@ -172,6 +177,7 @@ This section provides examples in the following frameworks:
 * Python3
 * Go
 * Ruby
+* Rust
 
 ### NodeJS
 
@@ -204,4 +210,10 @@ go build
 cd ./ruby
 bundle install
 ruby main.rb
+```
+
+### Rust
+```
+cd ./rust
+cargo run
 ```
