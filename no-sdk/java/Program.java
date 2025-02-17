@@ -18,7 +18,7 @@ public class Program {
             System.out.println("\n\n*****************Bedrock Converse Sample*******************************");
             String modelId = "amazon.titan-text-express-v1";
             String bedrockRegion = "us-east-1";
-            String prompt = "Which is the capital of England?";
+            String prompt = "What is the capital of England?";
             BedrockConverseSample.run(bedrockRegion, modelId, prompt);
         }
     }
