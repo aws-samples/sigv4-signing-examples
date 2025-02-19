@@ -6,8 +6,8 @@ aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
 aws_access_key_id=$AWS_ACCESS_KEY_ID
 region=$AWS_DEFAULT_REGION
 
-s3_bucket_name=cognitran-test-123
-path=/Cognitran.json
+s3_bucket_name=bucket-name
+path=/object-key
 
 host="$s3_bucket_name.s3.$region.amazonaws.com"
 
