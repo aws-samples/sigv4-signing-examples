@@ -1,0 +1,13 @@
+[package]
+name = "aws-sigv4-example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = { version = "0.11", features = ["blocking"] }
+hmac = "0.12"
+sha2 = "0.10"
+hex = "0.4"
+chrono = "0.4"
+base64 = "0.21"
+dotenv = "0.15"

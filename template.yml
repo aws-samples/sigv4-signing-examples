@@ -22,13 +22,13 @@ Resources:
   HelloWorldLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: HelloWorldApiLogGroup
+      LogGroupName: !Sub HelloWorldApiLogGroup-${AWS::StackName}
       RetentionInDays: 7
 
   HelloWorldApi:
     Type: AWS::Serverless::Api
     Properties: 
-      Name: HelloWorldApi
+      Name: !Sub HelloWorldApi-${AWS::StackName}
       StageName: Prod
       Auth:
         DefaultAuthorizer: AWS_IAM
