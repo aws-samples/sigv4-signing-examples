@@ -229,3 +229,20 @@ ruby main.rb
 cd ./rust
 cargo run
 ```
+
+### Bash
+```
+cd ./bash
+bash main.sh
+```
+To run any specific sample:
+
+```
+cd ./bash
+bash samples/BedrockConverseSample.sh
+```
+
+```
+cd ./bash
+bash samples/S3Sample.sh
+```
