@@ -1,5 +1,5 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source "$DIR/../AWSSigner.sh"
+source "$DIR/AWSSigner.sh"
 
 ## read from environment variables
 aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
