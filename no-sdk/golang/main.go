@@ -58,7 +58,7 @@ func main() {
 	signedHeaders := "host;x-amz-date"
 
 	// Create the canonical request
-	payloadHash := "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" // For GET requests, the payload is always an empty string
+	payloadHash := "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" // For GET requests, the payload is always a sha256 hash of an empty string
 	canonicalRequest := strings.Join([]string{
 		"GET",
 		canonicalURI,
